@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -15,18 +17,24 @@ import java.time.LocalDate;
 public class TaskDTO {
 
     @JsonProperty("title")
-    String title;
+    @NotNull(message = "title cannot be absent")
+    @NotBlank(message = "title cannot be empty")
+     String title;
 
     @JsonProperty("responsible")
+    @NotNull(message = "responsible cannot be absent")
+    @NotBlank(message = "responsible cannot be empty")
     String responsible;
 
     @JsonProperty("description")
     String description;
 
     @JsonProperty("priority")
+    @NotNull(message = "priority can not be absent")
     Priority priority;
 
     @JsonProperty("deadline")
+    @NotNull(message = "deadline can not be absent")
     LocalDate deadline;
 
     public Task model(){

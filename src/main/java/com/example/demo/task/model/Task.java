@@ -44,6 +44,9 @@ public class Task {
         this.status = Status.Aberta;
     }
 
+    public Task(String title, String responsible, String description, Priority priority, LocalDate deadline, Status status) {
+    }
+
     public TaskDTO dto(){
         return new TaskDTO(this.title,this.responsible,this.description,this.priority,this.deadline);
     }
